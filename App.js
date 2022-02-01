@@ -11,7 +11,6 @@ import Inquiries from './App/containers/inquiries';
 import MyUnitDetails from './App/containers/myUnitDetails';
 import Overview from './App/containers/overview';
 import ProjectUpdates from './App/containers/projectUpdates';
-
 const overView = require('./App/src/assets/overView.png');
 const overViewFocused = require('./App/src/assets/overViewFocused.png');
 const details = require('./App/src/assets/details.png');
@@ -36,7 +35,8 @@ export default function App() {
             return (
               <Image
                 style={{
-                  width: responsiveWidth(5),
+                  width: responsiveWidth(5.4),
+                  height: responsiveWidth(5.4),
                   resizeMode: 'contain',
                 }}
                 source={
@@ -52,7 +52,7 @@ export default function App() {
                     ? focused
                       ? detailsFocused
                       : details
-                    : !focused
+                    : focused
                     ? inquiresFocused
                     : inquires
                 }></Image>

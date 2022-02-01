@@ -1,33 +1,25 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, Modal, Text, Image} from 'react-native';
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
-const AddButton = item => {
+const ModalV = ({visible}) => {
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.icon}
-        source={require('../src/assets/background.png')}
-      />
+    <Modal visible={visible} style={styles.container}>
+      <Image style={styles.icon} source={require('../src/assets/cross.png')} />
       <Text style={styles.text}>{'June 21,2021'}</Text>
-    </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-
-    borderRadius: responsiveWidth(0.5),
-    elevation: 1,
-  },
+  container: {},
   icon: {
     alignSelf: 'center',
-    width: responsiveWidth(74),
-    height: responsiveHeight(24),
+    width: responsiveWidth(19),
+    resizeMode: 'contain',
     margin: responsiveWidth(2),
   },
   text: {
@@ -44,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddButton;
+export default ModalV;

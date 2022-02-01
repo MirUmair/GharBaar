@@ -1,56 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
+  Text,
+  TouchableOpacity,
   FlatList,
   Image,
-  TouchableOpacity,
-  Text,
-  ScrollView,
 } from 'react-native';
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
-import Header from '../components/header';
-import Payment from '../components/payment';
-import Documents from '../components/documents';
-
-const AddButton = ({}) => {
-  const [payment, setPayment] = useState(true);
-  const DATA = [
-    {
-      id: '1',
-      key: 'Floor',
-      value: '7th floor',
-    },
-    {
-      id: '2',
-      key: 'Unit NO',
-      value: 'FC-335',
-    },
-    {
-      id: '3',
-      key: 'Size',
-      value: '1020 sq. ft,',
-    },
-    {
-      id: '4',
-      key: 'Purchase Rate',
-      value: '9000 sq. ft,',
-    },
-    {
-      id: '5',
-      key: 'Price',
-      value: '9,230,405',
-    },
-    {
-      id: '6',
-      key: 'Floor',
-      value: '09/12/2021',
-    },
-  ];
+const Payment = item => {
   const DATA2 = [
     {
       id: '1',
@@ -68,74 +30,57 @@ const AddButton = ({}) => {
       value: '63 lac, 48 thousand, 2 hundred and 50 rupees.',
     },
   ];
-  const Item = ({item}) => (
-    <View style={styles.text}>
-      <Text style={styles.textDark}>{item.key + ':'}</Text>
-      <Text style={styles.textLight}>{item.value}</Text>
+  const renderItem2 = ({item}) => <Item2 item={item} />;
+  const Item2 = ({item}) => (
+    <View style={styles.container}>
+      <Image
+        style={styles.icon}
+        source={require('../src/assets/document.png')}
+      />
     </View>
   );
-
-  const renderItem = ({item}) => <Item item={item} />;
-
   return (
-    <View style={{backgroundColor: '#fff', flex: 1}}>
-      <Header />
-      <ScrollView>
-        <View>
-          <View style={styles.bar}>
-            <Text style={styles.headingText}>{'Unit Details'}</Text>
-            <FlatList
-              style={styles.flatlist}
-              numColumns={2}
-              data={DATA}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-            />
-          </View>
-          <View style={styles.buttonView}>
-            <TouchableOpacity onPress={() => setPayment(true)}>
-              <Text style={payment ? styles.button1 : styles.button2}>
-                {'Payment Details'}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setPayment(false)}>
-              <Text style={!payment ? styles.button1 : styles.button2}>
-                {'Files'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          {payment ? <Payment /> : <Documents />}
-        </View>
-      </ScrollView>
+    <View
+      style={{
+        marginTop: responsiveHeight(2),
+        paddingBottom: responsiveHeight(2),
+      }}>
+      <View style={{flexDirection: 'row'}}>
+        <Image
+          style={styles.folder}
+          source={require('../src/assets/folder.png')}
+        />
+        <Text style={styles.text}>Documents</Text>
+      </View>
+
+      <FlatList
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={[{margin: responsiveWidth(3)}]}
+        data={DATA2}
+        renderItem={renderItem2}
+        keyExtractor={item => item.id}
+      />
+      <View style={{flexDirection: 'row', marginTop: responsiveHeight(5)}}>
+        <Image
+          style={styles.folder}
+          source={require('../src/assets/folder.png')}
+        />
+        <Text style={styles.text}>Given Receipts</Text>
+      </View>
+      <FlatList
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={[{margin: responsiveWidth(3)}]}
+        data={DATA2}
+        renderItem={renderItem2}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  icon: {
-    alignItems: 'center',
-    flexDirection: 'row',
-
-    marginRight: responsiveWidth(5),
-  },
-  headingText: {
-    color: '#000',
-    marginTop: responsiveHeight(1.5),
-    fontSize: responsiveFontSize(2.2),
-    fontFamily: 'Poppins-SemiBold',
-  },
-  bar: {
-    marginTop: responsiveHeight(2),
-    backgroundColor: '#F9F9F9',
-    alignSelf: 'center',
-    borderRadius: responsiveWidth(1),
-    padding: responsiveWidth(2),
-    width: responsiveWidth(95),
-  },
-  text: {
-    flexDirection: 'row',
-    marginTop: responsiveHeight(2),
-  },
   barView: {
     width: responsiveWidth(80),
     height: responsiveHeight(7),
@@ -162,10 +107,22 @@ const styles = StyleSheet.create({
 
     elevation: 1,
   },
+  text: {
+    color: '#000',
+    fontFamily: 'Poppins-Regular',
+    marginBottom: responsiveHeight(2),
+  },
   icon: {
-    width: responsiveWidth(6),
+    width: responsiveWidth(90),
+    height: responsiveHeight(30),
     resizeMode: 'contain',
     marginLeft: responsiveWidth(2),
+  },
+  folder: {
+    width: responsiveWidth(6),
+    height: responsiveWidth(6),
+    resizeMode: 'contain',
+    marginHorizontal: responsiveWidth(3),
   },
   leftBar: {
     width: responsiveWidth(35),
@@ -235,4 +192,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddButton;
+export default Payment;

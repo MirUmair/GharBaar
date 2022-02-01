@@ -80,12 +80,9 @@ const AddButton = ({onPress}) => {
   };
   const chartConfig = {
     backgroundGradientFrom: '#fff',
-    // backgroundGradientFromOpacity: 0,
     backgroundGradientTo: '#fff',
-    // withVerticalLabels: false,
-    // backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(000, 000, 000, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
+    strokeWidth: 2,
     barPercentage: 1,
     propsForHorizontalLabels: {
       fontSize: responsiveFontSize(1),
@@ -176,22 +173,15 @@ const styles = StyleSheet.create({
     height: responsiveHeight(65),
   },
   chartCard: {
-    borderWidth: 0.1,
     backgroundColor: '#fff',
     overflow: 'hidden',
-    borderRadius: responsiveWidth(1),
+    borderRadius: responsiveWidth(2),
     marginTop: responsiveHeight(2),
     width: responsiveWidth(96),
     height: responsiveHeight(65),
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
+    elevation: 1,
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-    elevation: 2,
   },
   scrollView: {
     paddingBottom: responsiveHeight(1),

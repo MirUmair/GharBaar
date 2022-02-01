@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacityBase,
+  TouchableOpacity,
+} from 'react-native';
 import {
   responsiveFontSize,
   responsiveHeight,
@@ -12,10 +19,19 @@ const AddButton = ({}) => {
       <View
         style={{
           flexDirection: 'row',
-          width: responsiveWidth(28),
-          marginRight: responsiveWidth(6),
+          justifyContent: 'space-between',
+          width: responsiveWidth(30),
         }}>
-        <Image style={styles.icon} source={require('../src/assets/bell.png')} />
+        <TouchableOpacity style={{flexDirection: 'row'}}>
+          <Image
+            style={styles.icon}
+            source={require('../src/assets/bell.png')}
+          />
+          <Image
+            style={[styles.dot]}
+            source={require('../src/assets/dotCounter.png')}
+          />
+        </TouchableOpacity>
         <Image
           style={styles.icon}
           source={require('../src/assets/placeholder.png')}
@@ -27,7 +43,7 @@ const AddButton = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: responsiveHeight(12),
+    height: responsiveHeight(10),
     backgroundColor: '#F9F9F9',
     shadowOffset: {
       width: 0,
@@ -37,11 +53,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: responsiveWidth(100),
     alignSelf: 'center',
+    paddingHorizontal: responsiveWidth(3),
+    justifyContent: 'center',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  dotView: {
+    zIndex: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 3,
+    marginTop: responsiveHeight(-4.5),
+    marginLeft: responsiveWidth(-6.5),
+  },
+  dot: {
+    width: responsiveWidth(5),
+    marginTop: responsiveHeight(3),
+    marginLeft: responsiveWidth(-3),
+    resizeMode: 'contain',
+  },
   icon: {
-    width: responsiveWidth(18),
+    width: responsiveWidth(12),
     resizeMode: 'contain',
   },
 });
