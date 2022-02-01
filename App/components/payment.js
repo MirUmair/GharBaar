@@ -15,6 +15,8 @@ import {
 import PaymentModal from '../components/modal';
 const Payment = item => {
   const [visible, setVisible] = useState(false);
+  const [type, setType] = useState(1);
+
   const DATA2 = [
     {
       id: '1',
@@ -43,7 +45,7 @@ const Payment = item => {
   );
   return (
     <View>
-      <PaymentModal visible={visible} />
+      <PaymentModal visible={visible} setVisible={setVisible} type={type} />
       <FlatList
         style={[{marginLeft: responsiveWidth(3)}]}
         data={DATA2}
@@ -59,7 +61,10 @@ const Payment = item => {
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => setVisible(!visible)}
+        onPress={() => {
+          setType(1);
+          setVisible(!visible);
+        }}
         style={styles.button}>
         <Text style={[styles.textBtn]}>View Payment Plan</Text>
         <Image
@@ -67,7 +72,12 @@ const Payment = item => {
           source={require('../src/assets/arrow.png')}
         />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        onPress={() => {
+          setType(2);
+          setVisible(!visible);
+        }}
+        style={styles.button}>
         <Text style={[styles.textBtn]}>View Paid Installments</Text>
         <Image
           style={styles.icon}
@@ -130,10 +140,12 @@ const styles = StyleSheet.create({
   },
   textPercent: {
     marginLeft: responsiveWidth(5),
+    fontFamily: 'Poppins-Regular',
     color: '#000',
   },
   textBtn: {
     alignSelf: 'center',
+    fontFamily: 'Poppins-Regular',
     color: '#000',
   },
   textLight: {

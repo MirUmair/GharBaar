@@ -13,6 +13,10 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+import Icon from 'react-native-vector-icons/dist/AntDesign';
+import Entypo from 'react-native-vector-icons/dist/Entypo';
+
+import Header from '../components/header';
 const ModalV = ({visible, setVisible, type}) => {
   const DATA2 = [
     {
@@ -112,15 +116,21 @@ const ModalV = ({visible, setVisible, type}) => {
   const renderItem = ({item}) => <Item item={item} />;
   const Item = ({item, index}) => (
     <View
-      style={[
-        styles.item,
-        {backgroundColor: item.isTrue ? '#F4F4FC' : '#fff'},
-      ]}>
-      <Text style={styles.textLight}>{item.key}</Text>
-      <Text style={styles.textLight}>{item.value}</Text>
-      <Text style={[styles.textLight, {paddingLeft: responsiveWidth(2)}]}>
-        {item.value2}
-      </Text>
+      style={{
+        flexDirection: 'row',
+        height: responsiveHeight(8),
+        margin: responsiveHeight(2),
+      }}>
+      <Image
+        style={styles.icon}
+        source={require('../src/assets/placeholder2.png')}
+      />
+      <View style={[styles.item]}>
+        <Text style={styles.textLight}>
+          {'A new post has been added by skypark one.'}
+        </Text>
+        <Text style={[styles.textDark]}>{'September 20, 2021'}</Text>
+      </View>
     </View>
   );
   return (
@@ -129,86 +139,79 @@ const ModalV = ({visible, setVisible, type}) => {
       visible={visible}
       transparent
       onPress={() => setVisible(false)}>
-      <View style={styles.container}>
+      <Header />
+      <View
+        style={{
+          width: responsiveWidth(100),
+          backgroundColor: '#fff',
+
+          height: responsiveHeight(100),
+        }}>
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            margin: responsiveWidth(3),
+            alignItems: 'center',
+          }}
+          onPress={() => setVisible(false)}>
+          <Icon name="arrowleft" size={responsiveFontSize(3)} color="#000" />
+          <Text
+            style={{
+              color: '#000',
+              fontFamily: 'Poppins-SemiBold',
+              marginLeft: responsiveWidth(2),
+            }}>
+            Back
+          </Text>
+        </TouchableOpacity>
         <View
           style={{
-            width: responsiveWidth(100),
-            backgroundColor: '#fff',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            width: responsiveWidth(95),
             alignSelf: 'center',
-            justifyContent: 'center',
-            maxHeight: responsiveHeight(70),
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 1.41,
-
-            elevation: 2,
-            alignSelf: 'center',
-            borderWidth: 0.1,
           }}>
-          <TouchableOpacity onPress={() => setVisible(false)}>
-            <Image
-              style={styles.icon}
-              source={require('../src/assets/cross.png')}
-            />
-          </TouchableOpacity>
-          <View style={styles.innerView}>
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              style={styles.flatlist}
-              data={type === 2 ? DATA : DATA2}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
+          <Text
+            style={{
+              color: '#000',
+              fontFamily: 'Poppins-SemiBold',
+              marginLeft: responsiveWidth(2),
+            }}>
+            Notifications
+          </Text>
+          <View style={styles.buttonView}>
+            <Text style={styles.button2}>{'Weekly'}</Text>
+            <Entypo
+              name="chevron-down"
+              size={responsiveFontSize(3)}
+              color="#000"
             />
           </View>
         </View>
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          style={styles.flatlist}
+          data={type === 2 ? DATA : DATA2}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
       </View>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    justifyContent: 'center',
-  },
+  container: {},
   item: {
-    flexDirection: 'row',
     justifyContent: 'center',
-    height: responsiveHeight(6),
-    paddingLeft: responsiveWidth(4),
+    marginLeft: responsiveWidth(3),
   },
-  innerView: {
-    width: responsiveWidth(95),
-    borderRadius: responsiveWidth(1),
-    justifyContent: 'space-between',
-    marginBottom: responsiveHeight(3),
-    maxHeight: responsiveHeight(60),
-    flexDirection: 'row',
-    overflow: 'hidden',
-    backgroundColor: '#F4F4FC',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
 
-    elevation: 2,
-    alignSelf: 'center',
-    borderWidth: 0.1,
-  },
   icon: {
-    alignSelf: 'flex-end',
-    marginRight: responsiveWidth(3),
     width: responsiveWidth(16),
+    height: responsiveWidth(16),
     resizeMode: 'contain',
   },
   text: {
@@ -224,12 +227,36 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   textLight: {
-    color: 'gray',
-    fontFamily: 'Poppins-Regular',
-    width: responsiveWidth(31.5),
+    color: '#000',
+    fontFamily: 'Poppins-SemiBold',
+    width: responsiveWidth(60),
     textAlignVertical: 'center',
 
-    fontSize: responsiveFontSize(1.4),
+    fontSize: responsiveFontSize(1.6),
+  },
+  button2: {
+    borderRadius: responsiveWidth(1),
+    margin: responsiveWidth(1.5),
+    fontFamily: 'Poppins-SemiBold',
+    color: '#000',
+    fontSize: responsiveFontSize(1.5),
+  },
+  buttonView: {
+    backgroundColor: '#F4F5F9',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: responsiveWidth(3),
+    marginRight: responsiveWidth(3),
+    borderRadius: responsiveWidth(1),
+    justifyContent: 'space-between',
+  },
+  textDark: {
+    color: '#075595',
+    fontFamily: 'Poppins-Regular',
+    textAlignVertical: 'center',
+    marginTop: responsiveHeight(1.5),
+    fontSize: responsiveFontSize(1.3),
   },
 });
 

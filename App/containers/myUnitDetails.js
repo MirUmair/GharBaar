@@ -218,6 +218,8 @@ const styles = StyleSheet.create({
     margin: responsiveWidth(1.5),
     fontSize: responsiveFontSize(1.5),
     padding: responsiveWidth(1.5),
+    paddingHorizontal: responsiveWidth(2.5),
+    fontFamily: 'Poppins-Regular',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -230,6 +232,8 @@ const styles = StyleSheet.create({
   button2: {
     borderRadius: responsiveWidth(1),
     margin: responsiveWidth(1.5),
+    paddingHorizontal: responsiveWidth(2.5),
+    fontFamily: 'Poppins-Regular',
     padding: responsiveWidth(1.5),
     fontSize: responsiveFontSize(1.5),
   },

@@ -112,103 +112,55 @@ const ModalV = ({visible, setVisible, type}) => {
   const renderItem = ({item}) => <Item item={item} />;
   const Item = ({item, index}) => (
     <View
-      style={[
-        styles.item,
-        {backgroundColor: item.isTrue ? '#F4F4FC' : '#fff'},
-      ]}>
-      <Text style={styles.textLight}>{item.key}</Text>
-      <Text style={styles.textLight}>{item.value}</Text>
-      <Text style={[styles.textLight, {paddingLeft: responsiveWidth(2)}]}>
-        {item.value2}
+      style={{
+        margin: responsiveHeight(2),
+      }}>
+      <Text
+        style={[
+          styles.textDark,
+          {
+            color: '#005FFF',
+            textDecorationLine: 'underline',
+            fontSize: responsiveFontSize(1.5),
+          },
+        ]}>
+        {'SP_M_112'}
       </Text>
+      <Text style={[styles.textDark]}>{'Dec 16, 2020 1:00 PM'}</Text>
+      <Text style={styles.textLight}>
+        {'I need payment extensions for  my commercial shop unit. '}
+      </Text>
+      <Text style={[styles.textDark]}>{'Status: Pending'}</Text>
     </View>
   );
   return (
-    <Modal
-      animationType="slide"
-      visible={visible}
-      transparent
-      onPress={() => setVisible(false)}>
-      <View style={styles.container}>
-        <View
-          style={{
-            width: responsiveWidth(100),
-            backgroundColor: '#fff',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            maxHeight: responsiveHeight(70),
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 1.41,
-
-            elevation: 2,
-            alignSelf: 'center',
-            borderWidth: 0.1,
-          }}>
-          <TouchableOpacity onPress={() => setVisible(false)}>
-            <Image
-              style={styles.icon}
-              source={require('../src/assets/cross.png')}
-            />
-          </TouchableOpacity>
-          <View style={styles.innerView}>
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              style={styles.flatlist}
-              data={type === 2 ? DATA : DATA2}
-              renderItem={renderItem}
-              keyExtractor={item => item.id}
-            />
-          </View>
-        </View>
-      </View>
-    </Modal>
+    <View
+      style={{
+        width: responsiveWidth(100),
+        backgroundColor: '#fff',
+        height: responsiveHeight(100),
+      }}>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        style={styles.flatlist}
+        data={type === 2 ? DATA : DATA2}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    justifyContent: 'center',
-  },
+  container: {},
   item: {
-    flexDirection: 'row',
     justifyContent: 'center',
-    height: responsiveHeight(6),
-    paddingLeft: responsiveWidth(4),
+    marginLeft: responsiveWidth(3),
   },
-  innerView: {
-    width: responsiveWidth(95),
-    borderRadius: responsiveWidth(1),
-    justifyContent: 'space-between',
-    marginBottom: responsiveHeight(3),
-    maxHeight: responsiveHeight(60),
-    flexDirection: 'row',
-    overflow: 'hidden',
-    backgroundColor: '#F4F4FC',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
 
-    elevation: 2,
-    alignSelf: 'center',
-    borderWidth: 0.1,
-  },
   icon: {
-    alignSelf: 'flex-end',
-    marginRight: responsiveWidth(3),
     width: responsiveWidth(16),
+    height: responsiveWidth(16),
     resizeMode: 'contain',
   },
   text: {
@@ -224,12 +176,19 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   textLight: {
-    color: 'gray',
-    fontFamily: 'Poppins-Regular',
-    width: responsiveWidth(31.5),
+    color: '#000',
+    fontFamily: 'Poppins-SemiBold',
+    width: responsiveWidth(85),
     textAlignVertical: 'center',
 
-    fontSize: responsiveFontSize(1.4),
+    fontSize: responsiveFontSize(1.6),
+  },
+  textDark: {
+    color: '#075595',
+    fontFamily: 'Poppins-Regular',
+    textAlignVertical: 'center',
+    marginTop: responsiveHeight(0.5),
+    fontSize: responsiveFontSize(1.3),
   },
 });
 

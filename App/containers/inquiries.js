@@ -1,40 +1,71 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {
   responsiveFontSize,
+  responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
-const AddButton = ({onPress}) => {
+
+import Header from '../components/header';
+import PreviousInquiries from '../components/previousInquiries';
+import NewInquiries from '../components/newInquiries';
+
+const AddButton = ({}) => {
+  const [update, setUpdate] = useState(false);
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text
-        style={{
-          fontSize: responsiveFontSize(3),
-          fontFamily: 'Poppins-Regular',
-        }}>
-        Settings!
-      </Text>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <Header />
+      <View style={styles.buttonView}>
+        <TouchableOpacity onPress={() => setUpdate(true)}>
+          <Text style={update ? styles.button1 : styles.button2}>
+            {'Previous Inquiries'}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setUpdate(false)}>
+          <Text style={!update ? styles.button1 : styles.button2}>
+            {'Make New Inquiry'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {update ? <PreviousInquiries /> : <NewInquiries />}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  icon: {
-    alignItems: 'center',
+  buttonView: {
+    backgroundColor: '#F4F5F9',
     flexDirection: 'row',
-
-    marginRight: responsiveWidth(5),
+    marginLeft: responsiveWidth(3),
+    marginTop: responsiveHeight(4),
+    borderRadius: responsiveWidth(1),
+    justifyContent: 'space-between',
+    width: responsiveWidth(70),
   },
-  icon: {
-    backgroundColor: '#1F1F1F',
-
-    height: responsiveFontSize(10),
-    width: responsiveFontSize(10),
-    marginVertical: responsiveWidth(1),
-    marginHorizontal: responsiveWidth(1),
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#707070',
+  button1: {
+    backgroundColor: '#fff',
+    borderRadius: responsiveWidth(1),
+    margin: responsiveWidth(1.5),
+    fontSize: responsiveFontSize(1.5),
+    padding: responsiveWidth(1.5),
+    fontFamily: 'Poppins-Regular',
+    paddingHorizontal: responsiveWidth(2.5),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+  button2: {
+    borderRadius: responsiveWidth(1),
+    margin: responsiveWidth(1.5),
+    paddingHorizontal: responsiveWidth(2.5),
+    padding: responsiveWidth(1.5),
+    fontFamily: 'Poppins-Regular',
+    fontSize: responsiveFontSize(1.5),
   },
 });
 

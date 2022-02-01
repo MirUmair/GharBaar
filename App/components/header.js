@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -12,9 +12,15 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+import PaymentModal from '../components/notifications';
+
 const AddButton = ({}) => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <View style={styles.container}>
+      <PaymentModal visible={visible} setVisible={setVisible} />
+
       <Image style={styles.icon} source={require('../src/assets/icon.png')} />
       <View
         style={{
@@ -22,7 +28,9 @@ const AddButton = ({}) => {
           justifyContent: 'space-between',
           width: responsiveWidth(30),
         }}>
-        <TouchableOpacity style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          onPress={() => setVisible(true)}
+          style={{flexDirection: 'row'}}>
           <Image
             style={styles.icon}
             source={require('../src/assets/bell.png')}

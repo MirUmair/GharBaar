@@ -52,7 +52,6 @@ const Payment = item => {
         />
         <Text style={styles.text}>Documents</Text>
       </View>
-
       <FlatList
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -61,6 +60,30 @@ const Payment = item => {
         renderItem={renderItem2}
         keyExtractor={item => item.id}
       />
+      <View
+        style={{
+          flexDirection: 'row',
+          marginTop: responsiveHeight(2),
+          alignSelf: 'center',
+        }}>
+        <Text style={{color: '#000'}}>3-8</Text>
+        <View
+          style={{
+            backgroundColor: '#E5E5E5',
+            height: responsiveHeight(1),
+            marginLeft: responsiveWidth(2),
+            width: responsiveWidth(83),
+            alignSelf: 'center',
+          }}>
+          <View
+            style={{
+              backgroundColor: '#075595',
+              height: responsiveHeight(1),
+              width: responsiveWidth(30),
+            }}></View>
+        </View>
+      </View>
+
       <View style={{flexDirection: 'row', marginTop: responsiveHeight(5)}}>
         <Image
           style={styles.folder}

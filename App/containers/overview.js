@@ -71,6 +71,7 @@ const AddButton = ({onPress}) => {
       'Oct 2018',
       'Oct 2018',
       'Oct 2018',
+      'Oct 2018',
     ],
     datasets: [
       {
@@ -83,7 +84,7 @@ const AddButton = ({onPress}) => {
     backgroundGradientTo: '#fff',
     color: (opacity = 1) => `rgba(000, 000, 000, ${opacity})`,
     strokeWidth: 2,
-    barPercentage: 1,
+    barPercentage: 0.7,
     propsForHorizontalLabels: {
       fontSize: responsiveFontSize(1),
       fontFamily: 'Poppins-Regular',
@@ -91,7 +92,7 @@ const AddButton = ({onPress}) => {
     },
     propsForBackgroundLines: {},
     propsForVerticalLabels: {
-      fontSize: responsiveFontSize(1),
+      fontSize: responsiveFontSize(0.8),
       fontFamily: 'Poppins-Regular',
     },
   };
@@ -156,6 +157,7 @@ const AddButton = ({onPress}) => {
             keyExtractor={item => item.id}
           />
         </View>
+        <View style={{height: responsiveHeight(20)}}></View>
       </ScrollView>
     </View>
   );
@@ -184,8 +186,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
   },
   scrollView: {
-    paddingBottom: responsiveHeight(1),
-    height: responsiveHeight(76),
+    paddingBottom: responsiveHeight(10),
+    height: '100%',
   },
   mainView: {
     marginLeft: responsiveWidth(2),
