@@ -16,7 +16,7 @@ import {
 import Header from '../components/header';
 import Card from '../components/card';
 import {BarChart} from 'react-native-chart-kit';
-const AddButton = ({onPress}) => {
+const AddButton = ({}) => {
   const DATA = [
     {
       id: '1',

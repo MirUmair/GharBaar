@@ -23,7 +23,7 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-const AddButton = ({onPress}) => {
+const AddButton = ({}) => {
   const DATA = [
     {
       id: '1',
