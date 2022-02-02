@@ -136,7 +136,7 @@ const ModalV = ({visible, setVisible, type}) => {
             backgroundColor: '#fff',
             alignSelf: 'center',
             justifyContent: 'center',
-            maxHeight: responsiveHeight(70),
+            maxHeight: responsiveHeight(73),
             shadowColor: '#000',
             shadowOffset: {
               width: 0,
@@ -156,6 +156,17 @@ const ModalV = ({visible, setVisible, type}) => {
             />
           </TouchableOpacity>
           <View style={styles.innerView}>
+            <View style={styles.headingView}>
+              <Text style={styles.heading}>Payment Details</Text>
+              <Text style={[styles.heading]}>Due Date</Text>
+              <Text
+                style={[
+                  styles.heading,
+                  {textAlign: 'left', marginLeft: responsiveWidth(5)},
+                ]}>
+                Payment
+              </Text>
+            </View>
             <FlatList
               showsVerticalScrollIndicator={false}
               style={styles.flatlist}
@@ -182,15 +193,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     height: responsiveHeight(6),
-    paddingLeft: responsiveWidth(4),
+    paddingLeft: responsiveWidth(8),
   },
   innerView: {
     width: responsiveWidth(95),
     borderRadius: responsiveWidth(1),
     justifyContent: 'space-between',
     marginBottom: responsiveHeight(3),
-    maxHeight: responsiveHeight(60),
-    flexDirection: 'row',
+    maxHeight: responsiveHeight(63),
+
     overflow: 'hidden',
     backgroundColor: '#F4F4FC',
     shadowColor: '#000',
@@ -204,6 +215,21 @@ const styles = StyleSheet.create({
     elevation: 2,
     alignSelf: 'center',
     borderWidth: 0.1,
+  },
+  headingView: {
+    backgroundColor: '#075595',
+    width: responsiveWidth(95),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: responsiveHeight(4),
+  },
+  heading: {
+    color: '#fff',
+    textAlign: 'center',
+    fontFamily: 'Poppins-SemiBold',
+    width: responsiveWidth(32),
+    fontSize: responsiveFontSize(1.4),
   },
   icon: {
     alignSelf: 'flex-end',

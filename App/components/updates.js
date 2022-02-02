@@ -163,9 +163,7 @@ const Practice: React.FC<Props> = ({}) => {
           <Image
             style={styles.userImageViewSquare}
             resizeMode={'stretch'}
-            source={{
-              uri: 'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
-            }}
+            source={require('../src/assets/bg.png')}
           />
         </View>
         <View style={styles.descriptionWrapper}>

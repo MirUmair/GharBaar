@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(4),
     borderRadius: responsiveWidth(1),
     justifyContent: 'space-between',
-    width: responsiveWidth(46),
+    width: responsiveWidth(48.5),
   },
   button1: {
     backgroundColor: '#fff',
