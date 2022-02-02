@@ -11,7 +11,7 @@ import Inquiries from './App/containers/inquiries';
 import MyUnitDetails from './App/containers/myUnitDetails';
 import Overview from './App/containers/overview';
 import ProjectUpdates from './App/containers/projectUpdates';
-const overView = require('./App/src/assets/overView.png');
+const overView = require('./App/src/assets/overVew.png');
 const overViewFocused = require('./App/src/assets/overViewFocused.png');
 const details = require('./App/src/assets/details.png');
 const detailsFocused = require('./App/src/assets/detailsFocused.png');
@@ -25,7 +25,25 @@ const tab3 = 'My Unit Details';
 const tab4 = 'Inquiries';
 
 const Tab = createBottomTabNavigator();
-
+const getTabBarLabel =
+  routeName =>
+  ({focused}) =>
+    (
+      <Text
+        style={{
+          color: focused ? '#000' : '#959595',
+          fontSize: responsiveFontSize(1.2),
+          fontFamily: 'Poppins-Regular',
+        }}>
+        {routeName === tab1
+          ? tab1
+          : routeName === tab2
+          ? tab2
+          : routeName === tab3
+          ? tab3
+          : routeName}
+      </Text>
+    );
 export default function App() {
   return (
     <NavigationContainer>
@@ -35,8 +53,7 @@ export default function App() {
             return (
               <Image
                 style={{
-                  width: responsiveWidth(5.4),
-                  height: responsiveWidth(5.4),
+                  width: responsiveWidth(5.5),
                   resizeMode: 'contain',
                 }}
                 source={
@@ -58,8 +75,9 @@ export default function App() {
                 }></Image>
             );
           },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
+          tabBarLabel: getTabBarLabel(route.name),
+          swipeEnabled: true,
+          tabBarActiveTintColor: '#000',
         })}>
         <Tab.Screen name="Overview" component={Overview} />
         <Tab.Screen name="Project Updates" component={ProjectUpdates} />

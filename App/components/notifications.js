@@ -184,8 +184,8 @@ const ModalV = ({visible, setVisible, type}) => {
             <Text style={styles.button2}>{'Weekly'}</Text>
             <Entypo
               name="chevron-down"
-              size={responsiveFontSize(3)}
-              color="#000"
+              size={responsiveFontSize(2.5)}
+              color="#075595"
             />
           </View>
         </View>

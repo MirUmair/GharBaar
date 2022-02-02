@@ -130,7 +130,10 @@ const ModalV = ({visible, setVisible, type}) => {
       <Text style={styles.textLight}>
         {'I need payment extensions for  my commercial shop unit. '}
       </Text>
-      <Text style={[styles.textDark]}>{'Status: Pending'}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={[styles.textDark]}>{'Status: '}</Text>
+        <Text style={[styles.textDark, {color: '#FA7F25'}]}>{'Pending'}</Text>
+      </View>
     </View>
   );
   return (

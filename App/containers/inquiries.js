@@ -11,7 +11,7 @@ import PreviousInquiries from '../components/previousInquiries';
 import NewInquiries from '../components/newInquiries';
 
 const AddButton = ({}) => {
-  const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(true);
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <Header />
